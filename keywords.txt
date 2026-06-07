@@ -1,0 +1,14 @@
+gnl_timer_t	KEYWORD1
+gnl_timer	KEYWORD1
+
+
+gnl_timer_setup	KEYWORD2
+gnl_timer_new_and_setup	KEYWORD2
+gnl_timer_delete	KEYWORD2
+gnl_timer_check	KEYWORD2
+gnl_timer_check_and_execute	KEYWORD2
+gnl_timer_start	KEYWORD2
+gnl_timer_stop	KEYWORD2
+gnl_timer_reset	KEYWORD2
+
+
