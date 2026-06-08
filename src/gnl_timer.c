@@ -3,8 +3,8 @@
  *
  *  Created on: Apr 14, 2026
  *      Author: Gnoolson
+ *      Version: 1.0.0
  */
-
 #include "gnl_timer.h"
 
 void gnl_timer_setup(gnl_timer_t* p_timer, uint32_t period, bool loop) {

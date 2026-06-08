@@ -3,6 +3,7 @@
  *
  *  Created on: Apr 14, 2026
  *      Author: Gnoolson
+ *     Version: 1.0.0
  */
 #ifndef GNL_TIMER_H_
 #define GNL_TIMER_H_

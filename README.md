@@ -1,46 +1,39 @@
-# gnl-timer.
+# gnl-timer
 ## Simple timer for Arduino
 
 A lightweight timer library for Arduino that allows you to execute tasks at fixed time intervals without using delay(). Timers can run once or repeatedly and can either be checked manually or execute a callback function automatically.
 
 ## API  
 ### Timer Initialization    
-// Initialize an existing timer  
+Initialize an existing timer  
 `void gnl_timer_setup(gnl_timer_t* p_timer, uint32_t period, bool loop);`  
 
-// Allocate and initialize a new timer on the heap  
+Allocate and initialize a new timer on the heap  
 `gnl_timer_t* gnl_timer_new_and_setup(uint32_t period, bool loop);`  
 
 ### Timer Destruction  
-// Delete a timer allocated on the heap  
+Delete a timer allocated on the heap  
 `void gnl_timer_delete(gnl_timer_t* p_timer);`
 
 ### Timer Execution  
-// Check whether the timer has elapsed  
-// Returns true when the timer is ready to run  
-`bool gnl_timer_check(gnl_timer_t* p_timer);  `
+Check whether the timer has elapsed. Returns true when the timer is ready to run    
+`bool gnl_timer_check(gnl_timer_t* p_timer);`  
 
-// Check the timer and execute the specified callback function  
-// when the timer has elapsed  
-`void gnl_timer_check_and_execute(
-    gnl_timer_t* p_timer,
-    void (*p_func)(void* p_value),
-    void* p_value
-);`
+Check the timer and execute the specified callback function  when the timer has elapsed  
+`void gnl_timer_check_and_execute(gnl_timer_t* p_timer, void (*p_func)(void* p_value), void* p_value);`
 
 ### Timer Control  
-// Start a stopped timer  
+Start a stopped timer  
 `void gnl_timer_start(gnl_timer_t* p_timer);`  
 
-// Stop the timer  
+Stop the timer  
 `void gnl_timer_stop(gnl_timer_t* p_timer);`  
 
-// Reset the timer countdown  
+Reset the timer countdown  
 `void gnl_timer_reset(gnl_timer_t* p_timer);`  
 
 
-
-Example: Automatic Callback Execution  
+### Example: Automatic Callback Execution  
 ```
 extern "C" {
 #include <gnl_timer.h>
@@ -66,7 +59,7 @@ void loop() {
 ```
 
 
-Example: Manual Timer Check
+### Example: Manual Timer Check
 ```
 extern "C" {
 #include <gnl_timer.h>
