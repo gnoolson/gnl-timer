@@ -3,7 +3,7 @@
  *
  *  Created on: Apr 14, 2026
  *      Author: Gnoolson
- *      Version: 1.0.0
+ *     Version: 1.1.0
  */
 #include "gnl_timer.h"
 
@@ -18,6 +18,7 @@ void gnl_timer_setup(gnl_timer_t* p_timer, uint32_t period, bool loop) {
 gnl_timer_t* gnl_timer_new_and_setup(uint32_t period, bool loop) {
     gnl_timer_t* p_timer = malloc(sizeof(gnl_timer_t));
     gnl_timer_setup(p_timer, period, loop);
+    
     return p_timer;
 }
 
@@ -48,6 +49,10 @@ bool gnl_timer_check(gnl_timer_t* p_timer) {
 void gnl_timer_check_and_execute(gnl_timer_t* p_timer, void (*p_func)(void* p_value), void* p_value) {
     if (gnl_timer_check(p_timer))
         p_func(p_value);
+}
+
+bool gnl_timer_is_active(gnl_timer_t* p_timer){
+    return p_timer->active;
 }
 
 void gnl_timer_start(gnl_timer_t* p_timer) {

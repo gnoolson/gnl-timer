@@ -16,4 +16,4 @@ CompileFlags:
     - "-m*"
   Add:
     - --target=thumbv7em-none-eabi
-    - -I/data/projects/arduino/libraries/gnl-timer/src
+    - -I/data/project/arduino/libraries/gnl-timer/src

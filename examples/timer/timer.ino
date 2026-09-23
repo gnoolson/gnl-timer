@@ -5,7 +5,7 @@ extern "C" {
 gnl_timer_t timer;
 
 void print_function(int* p_value) {
-    Serial.print("value = ");
+    Serial.print(F("value = "));
     Serial.println(*p_value);
     (*p_value)++;
 }
@@ -13,6 +13,7 @@ void print_function(int* p_value) {
 void setup() {
     Serial.begin(9600);
     gnl_timer_setup(&timer, 1000 /*period ms*/, true /*loop*/);
+    gnl_timer_start(&timer);
 }
 
 void loop() {

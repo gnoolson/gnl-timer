@@ -10,5 +10,6 @@ gnl_timer_check_and_execute	KEYWORD2
 gnl_timer_start	KEYWORD2
 gnl_timer_stop	KEYWORD2
 gnl_timer_reset	KEYWORD2
+gnl_timer_is_active	KEYWORD2
 
 

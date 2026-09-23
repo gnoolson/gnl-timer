@@ -3,7 +3,7 @@
  *
  *  Created on: Apr 14, 2026
  *      Author: Gnoolson
- *     Version: 1.0.0
+ *     Version: 1.1.0
  */
 #ifndef GNL_TIMER_H_
 #define GNL_TIMER_H_
@@ -23,19 +23,13 @@ typedef struct {
  *
  * */
 void gnl_timer_setup(gnl_timer_t* p_timer, uint32_t period, bool loop);
-
 gnl_timer_t* gnl_timer_new_and_setup(uint32_t period, bool loop);
-
 void gnl_timer_delete(gnl_timer_t* p_timer);
-
 bool gnl_timer_check(gnl_timer_t* p_timer);
-
 void gnl_timer_check_and_execute(gnl_timer_t* p_timer, void (*p_func)(void* p_value), void* p_value);
-
+bool gnl_timer_is_active(gnl_timer_t* p_timer);
 void gnl_timer_start(gnl_timer_t* p_timer);
-
 void gnl_timer_stop(gnl_timer_t* p_timer);
-
 void gnl_timer_reset(gnl_timer_t* p_timer);
 
 #endif /* GNL_TIMER_H_ */

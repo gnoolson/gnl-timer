@@ -4,33 +4,52 @@
 A lightweight timer library for Arduino that allows you to execute tasks at fixed time intervals without using delay(). Timers can run once or repeatedly and can either be checked manually or execute a callback function automatically.
 
 ## API  
-### Timer Initialization    
-Initialize an existing timer  
-`void gnl_timer_setup(gnl_timer_t* p_timer, uint32_t period, bool loop);`  
 
-Allocate and initialize a new timer on the heap  
-`gnl_timer_t* gnl_timer_new_and_setup(uint32_t period, bool loop);`  
+```
+// Initialize an existing timer  
+void gnl_timer_setup(gnl_timer_t* p_timer, uint32_t period, bool loop);
+```
 
-### Timer Destruction  
-Delete a timer allocated on the heap  
-`void gnl_timer_delete(gnl_timer_t* p_timer);`
+```
+// Allocate and initialize a new timer on the heap  
+gnl_timer_t* gnl_timer_new_and_setup(uint32_t period, bool loop); 
+```
 
-### Timer Execution  
-Check whether the timer has elapsed. Returns true when the timer is ready to run    
-`bool gnl_timer_check(gnl_timer_t* p_timer);`  
+```
+// Delete a timer allocated on the heap  
+void gnl_timer_delete(gnl_timer_t* p_timer);
+```
 
-Check the timer and execute the specified callback function  when the timer has elapsed  
-`void gnl_timer_check_and_execute(gnl_timer_t* p_timer, void (*p_func)(void* p_value), void* p_value);`
+```
+// Check whether the timer has elapsed. Returns true when the timer is ready to run    
+bool gnl_timer_check(gnl_timer_t* p_timer);  
+```
 
-### Timer Control  
-Start a stopped timer  
-`void gnl_timer_start(gnl_timer_t* p_timer);`  
+```
+// Check the timer and execute the specified callback function  when the timer has elapsed  
+void gnl_timer_check_and_execute(gnl_timer_t* p_timer, void (*p_func)(void* p_value), void* p_value);
+```
 
-Stop the timer  
-`void gnl_timer_stop(gnl_timer_t* p_timer);`  
+```
+// Start the timer  
+void gnl_timer_start(gnl_timer_t* p_timer);  
+```
 
-Reset the timer countdown  
-`void gnl_timer_reset(gnl_timer_t* p_timer);`  
+```
+// Stop the timer  
+void gnl_timer_stop(gnl_timer_t* p_timer);
+```
+
+```
+// Reset the timer countdown  
+void gnl_timer_reset(gnl_timer_t* p_timer);  
+```
+
+```
+// Check if the timer is active
+bool gnl_timer_is_active(gnl_timer_t* p_timer);
+```
+
 
 
 ### Example: Automatic Callback Execution  
@@ -50,10 +69,12 @@ void print_function(int *p_value) {
 void setup() {
     Serial.begin(9600);
     p_timer = gnl_timer_new_and_setup(1000 /* period ms */, true /* loop */);
+    gnl_timer_start(p_timer);
 }
 
 void loop() {
     static int some_value = 1;
+    
     gnl_timer_check_and_execute(p_timer, &print_function, &some_value);
 }
 ```
@@ -76,11 +97,12 @@ void print_function(int* p_value) {
 void setup() {
     Serial.begin(9600);
     gnl_timer_setup(&timer, 1000 /* period ms */, true /* loop */);
+    gnl_timer_start(&timer);
 }
 
 void loop() {
     static int some_value = 1;
-
+    
     if (gnl_timer_check(&timer)) {
         print_function(&some_value);
     }
